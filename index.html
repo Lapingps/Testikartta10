@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koko ruudun maailmankartta</title>
+    
+    <!-- Ladataan Leaflet.js-kirjaston tyylit ja skripti -->
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <script src="https://unpkg.com"></script>
+
+    <style>
+        /* Poistetaan selaimen oletusreunukset, jotta kartta täyttää sivun täysin */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Karttaelementti, johon pakotettu tyyliasetukset suoraan (100vh ja 100vw) -->
+    <div id="map" style="height: 100vh; width: 100vw;"></div>
+
+    <script>
+        // Asetetaan alkupisteeksi koordinaatit 0,0 ja alhainen zoom-taso (2), jotta maailma näkyy
+        const map = L.map('map').setView([0, 0], 2);
+
+        // Ladataan tavallinen OpenStreetMap-karttadata
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> Contributors'
+        }).addTo(map);
+    </script>
+
+</body>
+</html>
